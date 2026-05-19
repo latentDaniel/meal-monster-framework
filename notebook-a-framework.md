@@ -4,7 +4,7 @@
 
 **Update cadence:** Rarely. Update only when the active phase changes, daily macros are recalibrated, new exclusions are added, or the supplement/beverage stack is modified.
 
-> **How to use this template:** Fork the repo, replace every `<PLACEHOLDER>` and example value below with your own. Upload the populated document as a source into a NotebookLM notebook titled "Meal Plan Requirements" (or your chosen name). The generator prompt in `prompts/generator-prompt.md` will then call into it.
+> **How to use this template:** Fork the repo, replace every `<PLACEHOLDER>` and example value below with your own (or run [`prompts/setup-interview-prompt.md`](prompts/setup-interview-prompt.md) to have an AI populate it for you). Then save the populated document wherever your AI can read it later — a local markdown file used with Claude Code / Codex, a file uploaded to a Claude Project or Custom GPT, or a source inside a NotebookLM notebook titled "Meal Plan Requirements." Any of these works; the generator prompt in `prompts/generator-prompt.md` then calls into it.
 
 ---
 

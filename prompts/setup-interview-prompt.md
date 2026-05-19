@@ -1,19 +1,23 @@
 # Setup Interview Prompt — One-Shot Notebook A Generator
 
-**How to use:** Paste this entire file into any capable LLM chat (a frontier model is recommended). It will interview you, optionally research on your behalf, and output a fully populated `notebook-a-framework.md` ready to upload as Notebook A in NotebookLM.
+**How to use:** Paste this entire file into your AI of choice — Claude Code, Codex, ChatGPT, Claude in a Project, Gemini, or any LLM that can read text and follow instructions. (Meal Monster is the framework; the AI is what runs it.) The AI will interview you, optionally research on your behalf, and output a fully populated `notebook-a-framework.md` you can save anywhere.
 
 > Designed to be the **only setup step you need** before you start generating weekly meal plans.
+
+> **Where to put the output.** The populated document is just a reference document — store it wherever your AI can read it later. Common options: save locally and use with a file-aware tool like Claude Code or Codex; upload to a Claude Project or Custom GPT for persistent context; add it as a source in NotebookLM (best if you plan to grow a large Notebook B inventory and want RAG-style queries). Any of these works.
 
 ---
 
 ## Prompt (paste everything below into your AI of choice)
 
-You are helping me set up **Meal Monster** — a prompt-driven meal-planning framework. The framework uses two NotebookLM notebooks:
+You are helping me set up **Meal Monster** — a prompt-driven meal-planning framework. The framework uses two **reference documents**:
 
 - **Notebook A — Framework & Constraints:** my macros, exclusions, supplement stack, equipment, phase logic, and generator instructions. Rarely updated.
 - **Notebook B — Techniques & Ingredients:** my evolving inventory of proteins, carbs, vegetables, flavor stacks, bulk-cook techniques, and meal templates. Grows continuously.
 
-Your job in this conversation is to **interview me, then produce a complete, populated Notebook A document I can upload to NotebookLM**.
+These can live anywhere I can later point an AI at — local markdown files used with a file-aware tool, an uploaded file in a Claude Project / Custom GPT, or sources inside a NotebookLM notebook. The naming convention ("Notebook A / B") is just our shorthand; nothing in the framework requires NotebookLM specifically.
+
+Your job in this conversation is to **interview me, then produce a complete, populated Notebook A document I can save to whichever reference store I choose**.
 
 ### Open with a disclaimer (required, before your first question)
 
@@ -21,7 +25,7 @@ Your very first message must begin with this verbatim block (you may format it h
 
 > Before we start: I'm an AI tool that helps you think through meal ideas and rough macro targets. I'm **not** a doctor, dietitian, or therapist, and nothing I say is medical or nutrition advice. I don't know your full medical history, and my suggestions can be wrong or inappropriate for you. This framework is for recreational and educational use — please use it with care, and check with a qualified healthcare professional (physician or registered dietitian) before acting on anything that materially changes how you eat, train, or take medication, especially if you have a medical condition, are pregnant or breastfeeding, take prescription medications, or have any history that makes nutrition decisions higher-stakes for you.
 >
-> One more thing — the document we're about to produce will contain personal health information. Keep it **local** (your own computer or phone). Don't commit it to a public git repo, share it on social media, or upload it to services you don't control.
+> One more thing — the document we're about to produce will contain personal health information. **It's recommended you keep it private** — store it somewhere you trust (your own device, a private cloud you control, or a service whose privacy posture you've reviewed). It's your decision if you choose to share it more broadly; just make that decision deliberately.
 >
 > *(This echoes the project's full disclaimer and data-privacy notes in the README. Read those for the complete version.)*
 
@@ -66,8 +70,8 @@ Once the interview is complete, output the full populated `notebook-a-framework.
 After the document, in plain prose, give me:
 - A 5-bullet summary of the most consequential choices we made (so I can challenge any of them)
 - A short list of suggested **Notebook B seed sources** I could ingest first (recipe sites, cookbook chapters, articles, or topic search queries) — three per inventory if possible: proteins, carbs, veg, flavor stacks, bulk-cook techniques, meal templates
-- One paragraph on what to expect next: upload Notebook A to NotebookLM, seed Notebook B with the suggested sources via `prompts/notebook-b-ingestion-prompt.md`, then run `prompts/generator-prompt.md` for the first weekly plan
-- A closing reminder that the populated document contains personal health information and should be kept local — not committed to public repos, not posted publicly, not uploaded to services the user doesn't control
+- One paragraph on what to expect next: save Notebook A to the user's chosen reference store (local file, Claude Project, NotebookLM source — list the trade-offs in one sentence each), seed Notebook B with the suggested sources via `prompts/notebook-b-ingestion-prompt.md`, then run `prompts/generator-prompt.md` for the first weekly plan
+- A closing reminder that the populated document contains personal health information and is best kept private — though it's the user's decision how broadly to share it
 
 ### Notebook A template you must follow
 

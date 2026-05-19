@@ -1,15 +1,23 @@
 # Meal Monster
 
-> A two-notebook, prompt-driven meal-planning framework that turns **your** macros, exclusions, and ingredient library into a weekly plan, grocery list, and prep timeline.
+> A prompt-driven meal-planning framework that turns **your** macros, exclusions, and ingredient library into a weekly plan, grocery list, and prep timeline. Pair it with any capable AI.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Built for: NotebookLM](https://img.shields.io/badge/built%20for-NotebookLM-4285F4.svg)](https://notebooklm.google.com/)
 [![Setup: single prompt](https://img.shields.io/badge/setup-single%20prompt-success.svg)](prompts/setup-interview-prompt.md)
-[![AI-agnostic](https://img.shields.io/badge/AI--agnostic-bring%20your%20own%20LLM-lightgrey.svg)](#bring-your-own-ai)
+[![AI-agnostic](https://img.shields.io/badge/AI--agnostic-bring%20your%20own%20LLM-lightgrey.svg)](#what-youll-need)
+[![Storage: your choice](https://img.shields.io/badge/storage-your%20choice-informational.svg)](#where-to-store-your-reference-documents)
 
 ---
 
 Most meal planners hand you somebody else's recipes and hope your goals fit. Meal Monster inverts that. It's a framework you fill in, not a database you browse — built for people running a structured cut, recomp, or lean-bulk who already know their macros, train seriously, and want every meal to enforce things like a per-meal protein floor, a leucine threshold, carbs front-loaded around training, and a caffeine ceiling **you** define.
+
+## What you'll need
+
+Meal Monster is the framework; an AI is what runs it. You'll need:
+
+1. **An AI you trust to read text and follow instructions.** Anything frontier-class works: Claude Code, Codex, ChatGPT, Claude in a Project, Gemini, etc. The prompts assume nothing model-specific.
+2. **Somewhere to keep your reference documents.** See [Where to store your reference documents](#where-to-store-your-reference-documents) below — options range from "a folder of markdown files on your laptop" to "a NotebookLM notebook with RAG over dozens of sources." Pick what fits your habits.
+3. **About 20 minutes** for the one-shot setup interview that produces your Notebook A.
 
 ## How it works
 
@@ -25,18 +33,32 @@ Most meal planners hand you somebody else's recipes and hope your goals fit. Mea
                               ▼
                   ┌───────────────────────┐
                   │   Generator prompt    │
-                  │  (any capable LLM)    │
+                  │  (your AI of choice)  │
                   └───────────┬───────────┘
                               ▼
               7-day meal grid · daily totals · grocery
               list · parallel prep-day timeline · subs
 ```
 
-**Notebook A** is the rules engine — profile, macros, exclusions, supplement stack, equipment, phase logic with explicit ramp-in, diet break, and stall triggers.
+**Notebook A** is the rules engine — profile, macros, exclusions, supplement stack, equipment, phase logic with explicit ramp-in, diet break, and stall triggers. It's one document; you populate it once and update it rarely.
 
 **Notebook B** is your living ingredient and technique library, grown over time by feeding any source you trust — recipes, articles, cookbooks, video transcripts, your own notes — through a structured ingestion prompt that sorts everything into six inventories: proteins, carbs, volume vegetables, flavor stacks, bulk-cook techniques, and meal templates.
 
-**The generator prompt** reads both notebooks weekly and emits a meal grid, daily totals with caffeine flags, a grocery list grouped by store section, and a prep-day timeline that schedules parallel appliance tracks — smoker, pressure cooker, oven, rice cooker — reconciling cooked-gram yield against the week's plan.
+**"Notebook" is just our shorthand for "a reference document your AI can read."** The names come from NotebookLM, where this framework was first built, but Meal Monster isn't tied to it. Both notebooks can live wherever you want.
+
+**The generator prompt** reads both reference documents weekly and emits a meal grid, daily totals with caffeine flags, a grocery list grouped by store section, and a prep-day timeline that schedules parallel appliance tracks — smoker, pressure cooker, oven, rice cooker — reconciling cooked-gram yield against the week's plan.
+
+## Where to store your reference documents
+
+Pick whichever fits how you already work — Meal Monster doesn't care:
+
+| Option | Best for | How it works |
+|---|---|---|
+| **Local markdown files** | You already use a file-aware AI tool (Claude Code, Codex, Aider, Cursor). Simplest possible setup. | Save `notebook-a-framework.md` and a `notebook-b.md` (or a folder) in a directory. Your tool reads them directly. |
+| **Claude Project or Custom GPT** | You want persistent context in a dedicated chat thread, no file-aware tool required. | Upload both files to a Project / GPT once. The model has them in every conversation. |
+| **NotebookLM** | Notebook B is growing past a dozen sources and you want RAG-style queries across all of them. | Create two notebooks; upload Notebook A as a single source, ingest Notebook B sources via the ingestion prompt. Pair with Gemini or any AI that can talk to NotebookLM (directly or via MCP). |
+
+You can mix-and-match (e.g., local Notebook A + NotebookLM for Notebook B) or move between options as your setup evolves. The prompts work the same way regardless.
 
 ## Single-prompt setup
 
@@ -45,14 +67,10 @@ The hardest part of any framework is filling it in. Meal Monster ships with **on
 - Interview you conversationally, in small batches of 2–4 questions at a time
 - **Offer to research on your behalf** — macro calculation from body weight + goal, caffeine content of named supplements, technique substitutions for missing equipment, default fat / fiber floors with citations, sensible cut-and-diet-break schedules
 - Push back when something looks off (protein anchored to current weight at very high body weight, a fat target that compromises hormones, an unsustainable deficit)
-- Output a fully populated `notebook-a-framework.md` ready to upload to NotebookLM
+- Output a fully populated `notebook-a-framework.md` ready to save into your chosen reference store
 - Suggest seed sources for Notebook B so your first weekly plan is one ingestion away
 
 If you'd rather fill the template by hand, the placeholders in `notebook-a-framework.md` are all yours to define — but the interview is faster and catches mistakes.
-
-## Bring your own AI
-
-Meal Monster is **AI-agnostic**. Any capable LLM with NotebookLM access (either as a connected source or via MCP) can run the generator: ChatGPT, Claude, Gemini, open-weights models with the right tool wiring. The prompts assume nothing model-specific.
 
 ## Design philosophy
 
@@ -67,10 +85,10 @@ Meal Monster is **AI-agnostic**. Any capable LLM with NotebookLM access (either 
 ## Quick start
 
 1. **Fork this repo.**
-2. **Run the setup interview** — paste [`prompts/setup-interview-prompt.md`](prompts/setup-interview-prompt.md) into your AI of choice. Answer its questions; accept its research offers when convenient. Save its output as `notebook-a-framework.md`.
-3. **Create two NotebookLM notebooks** — *Meal Plan Requirements* (Notebook A) and *Meal Plan Ingredients and Techniques* (Notebook B). Upload your populated `notebook-a-framework.md` as the seed source for Notebook A.
+2. **Run the setup interview** — paste [`prompts/setup-interview-prompt.md`](prompts/setup-interview-prompt.md) into your AI. Answer its questions; accept its research offers when convenient. Save its output as `notebook-a-framework.md`.
+3. **Pick your reference store** — see the table above. Save Notebook A to it.
 4. **Seed Notebook B** by ingesting sources with [`prompts/notebook-b-ingestion-prompt.md`](prompts/notebook-b-ingestion-prompt.md). Good starting sources: recipe sites with macro data, cookbooks you already trust, transcripts from creators whose programming you follow, your own past meal logs. Aim for **3–6 entries per inventory** before generating your first plan — quality over quantity. Re-run ingestion any time you add new sources.
-5. **Generate a weekly plan** by pasting [`prompts/generator-prompt.md`](prompts/generator-prompt.md) into your AI with both notebooks reachable. Fill in the variables block and the agent emits the artifact.
+5. **Generate a weekly plan** by pasting [`prompts/generator-prompt.md`](prompts/generator-prompt.md) into your AI with both reference documents reachable. Fill in the variables block and the agent emits the artifact.
 6. *(Optional)* Install the agent roles under [`docs/agents/roles/`](docs/agents/roles/) to split program orchestration (coach) from plan production (architect).
 
 ## Worked example
@@ -127,11 +145,12 @@ By using this software, you acknowledge and agree that you use it **at your own 
 
 ## Data & privacy
 
-This framework collects and processes information about your diet, body metrics, training, and personal preferences. **Treat any populated document, generated plan, or log produced by this system as sensitive personal health data.**
+This framework collects and processes information about your diet, body metrics, training, and personal preferences. Any populated document, generated plan, or log this system produces should be treated as **personal health data**.
 
-- Prefer running the system **locally** (on your computer or phone).
-- **Do not** commit your populated `notebook-a-framework.md`, weekly plans, grocery lists, or prep schedules to **public** git repositories, shared drives, or other services you don't control. Keep them in a private location.
-- If you use a hosted LLM, NotebookLM, or any cloud service, be aware that your prompts and uploaded sources may be stored and processed by third parties under their own terms and privacy policies. Review those before sharing anything you wouldn't want retained.
+**It's recommended that you keep this information private** — store it somewhere you trust (your own device, a private cloud you control, or a service whose privacy posture you've reviewed). It's your decision if you choose to share it more broadly; just make that decision deliberately.
+
+- Avoid committing populated documents, weekly plans, grocery lists, or prep schedules to **public** git repositories or shared drives unless you intend them to be public.
+- If you use a hosted LLM, NotebookLM, a Claude Project, or any cloud service, your prompts and uploaded files may be stored and processed by third parties under their own terms and privacy policies. Review those before sharing anything you wouldn't want retained.
 
 ## License
 

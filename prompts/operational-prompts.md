@@ -2,6 +2,8 @@
 
 Three operational helpers you can drop into any capable LLM to keep the system running once Notebook A and Notebook B are set up. (For the one-shot initial setup, use [`setup-interview-prompt.md`](setup-interview-prompt.md) instead.)
 
+Wherever you've chosen to store your reference documents — local markdown files, a Claude Project / Custom GPT, a NotebookLM notebook, or anywhere else your AI can read — these prompts work the same way. "Re-upload" / "paste alongside" below means "update the source wherever you keep it."
+
 ---
 
 ## Prompt 1: Notebook A Maintenance
@@ -18,18 +20,18 @@ Apply the change with these rules:
 1. Preserve the document structure exactly — same section numbers, same table formats
 2. Recalculate any dependent values (e.g., if weight changes, recalculate macros if anchored to weight)
 3. Flag any downstream sections that are now inconsistent with the change
-4. Output the full updated document as a single markdown file ready to re-upload to NotebookLM
+4. Output the full updated document as a single markdown file ready to save back to my reference store
 5. At the end, summarize what changed in 3 bullets for my changelog
 ```
 
 ---
 
-## Prompt 2: NotebookLM Ingestion Handoff
+## Prompt 2: Notebook B Ingestion Handoff
 
-**When to use:** You've collected a batch of new sources (article links, recipe URLs, transcripts, your own notes) you want to add to Notebook B. This prompt prepares the ingestion instruction set so NotebookLM extracts content into the right structure.
+**When to use:** You've collected a batch of new sources (article links, recipe URLs, transcripts, your own notes) you want to add to Notebook B. This prompt prepares the ingestion instruction set so your AI extracts content into the right structure.
 
 ```
-I'm adding new sources to Notebook B (Techniques & Ingredients). I need you to prepare an ingestion instruction set that I'll paste into NotebookLM alongside the new sources.
+I'm adding new sources to Notebook B (Techniques & Ingredients). I need you to prepare an ingestion instruction set that I'll use alongside the new sources.
 
 The new sources are:
 [paste URLs / titles, one per line]
@@ -41,18 +43,18 @@ Your task:
 1. Review the source titles and predict which of the six inventories each will primarily populate (Proteins / Carbs / Veg / Flavor Stacks / Bulk Cooking / Meal Templates)
 2. Generate a customized ingestion prompt that emphasizes those inventories for this batch
 3. Add source-specific extraction hints if the source has a known format
-4. Output the final prompt ready to paste into NotebookLM
+4. Output the final prompt ready to run against the new sources
 5. After ingestion, I'll re-query Notebook B to verify the new entries were captured — give me 3 verification queries to run
 ```
 
 ---
 
-## Prompt 3: Weekly Plan Generation (via direct notebook access)
+## Prompt 3: Weekly Plan Generation (via direct reference access)
 
-**When to use:** You want an agent to pull from both notebooks directly (via NotebookLM's interface or an MCP connection) and generate the week's plan.
+**When to use:** You want an agent to pull from both reference documents directly (whatever store they live in — files on disk, a Claude Project, NotebookLM via its interface or MCP) and generate the week's plan.
 
 ```
-Generate this week's meal plan by pulling from my two NotebookLM notebooks.
+Generate this week's meal plan by pulling from my two reference documents (Notebook A constraints, Notebook B inventory).
 
 Variables:
 - WEEK_OF: <date>

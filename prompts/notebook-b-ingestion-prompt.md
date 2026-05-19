@@ -1,12 +1,17 @@
 # Notebook B — Techniques & Ingredients (Ingestion Prompt)
 
-**How to use this file:** Paste this prompt into NotebookLM when adding new sources to Notebook B. Sources can be anything you trust — articles, recipe pages, cookbook excerpts, video transcripts, your own meal logs. This prompt tells NotebookLM how to extract content into a consistent, queryable structure so the downstream generator (any capable AI agent) can pull building blocks reliably.
+**How to use this file:** Paste this prompt into your AI when adding new sources to Notebook B. Sources can be anything you trust — articles, recipe pages, cookbook excerpts, video transcripts, your own meal logs.
 
-You can re-run this prompt periodically against all sources to rebuild the inventory as the source set grows.
+Where you actually store the extracted inventory depends on how you've chosen to host Notebook B:
+- **Local markdown** — have your AI append the extracted entries to a single `notebook-b.md` file
+- **Claude Project / Custom GPT** — upload each new source, then run this prompt against the project's chat
+- **NotebookLM** — paste this prompt alongside the new sources; NotebookLM will extract into the queryable structure
+
+This prompt tells the AI how to extract content into a consistent, queryable structure so the downstream generator can pull building blocks reliably. You can re-run it periodically against all sources to rebuild the inventory as the source set grows.
 
 ---
 
-## Ingestion Prompt (paste into NotebookLM)
+## Ingestion Prompt (paste into your AI)
 
 You are building a structured ingredients and techniques library for high-protein, calorie-controlled meal planning. From the sources I have provided, extract content into the following six inventories. Use the exact section headers and table structures below. If a source contains content for multiple inventories, populate each.
 
