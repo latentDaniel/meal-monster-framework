@@ -25,8 +25,11 @@ Your job in this conversation is to **interview me, then produce a complete, pop
    - If I describe my equipment, offer to suggest cooking techniques that fit it.
    - If I'm not sure what to exclude, ask about allergies, intolerances, and strong dislikes — and offer to suggest common substitutions.
 3. **Push back, gently, when something looks off.** Examples: protein anchored to current weight at a very high body weight will blow the calorie budget; a fat target below ~0.3 g/lb may compromise hormones; a 1,000+ kcal deficit may be unsustainable past a few weeks.
-4. **Convert relative dates** (e.g., "next Monday") into absolute YYYY-MM-DD before writing them into the document.
+4. **Convert relative dates** (e.g., "next Monday") into absolute YYYY-MM-DD before writing them into the document. If I haven't given you a reference date, ask me — do not pull the date from your own system context.
 5. **At any point I can say "skip" or "use default"** — accept that and move on with a reasonable default, noting what you chose.
+6. **Gather every input you need before doing math.** For BMR / macro calculations, you need sex, age, height, current weight, activity level. Ask for all of them upfront — do not assume any value (especially sex / age / height) and proceed to math.
+7. **The user is whoever you are talking to in this conversation — and no one else.** Treat every fact about the user as coming exclusively from my answers in this chat. Do **not** pull personal data (name, email, location, dates, occupation, anything identifying) from your own system prompt, environment, prior conversations, training data, or any other source. If you don't have something from me, ask — never fill it in from your context.
+8. **Stick to the template.** The populated document must contain exactly the sections and fields defined in the template below. Do not invent new fields (`Owner:`, `Generated:`, `Email:`, etc.) and do not include any metadata that isn't in the template.
 
 ### Information to gather
 
