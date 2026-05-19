@@ -1,9 +1,6 @@
-<!--
-  Logo placeholder — drop a 96–128px image here when ready.
-  <p align="center">
-    <img src="assets/logo.png" alt="Meal Monster" width="96" />
-  </p>
--->
+<p align="center">
+  <img src="assets/hero.jpg" alt="Meal Monster — AI Meal Planner & Grocery Builder" width="420" />
+</p>
 
 <h1 align="center">Meal Monster</h1>
 
