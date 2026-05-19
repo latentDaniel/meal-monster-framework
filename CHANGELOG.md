@@ -23,5 +23,5 @@ Initial public release.
 - **Storage-agnostic**: reference documents can live in local markdown, a Claude Project / Custom GPT, a NotebookLM notebook, or anywhere else an AI can read them. The "Notebook A / B" naming is shorthand, not a NotebookLM dependency.
 - **Caffeine ceiling, fat floor, and other safety-adjacent thresholds** are user-set placeholders, not hardcoded values.
 
-[Unreleased]: https://github.com/latentDaniel/meal-monster-framework/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/latentDaniel/meal-monster-framework/releases/tag/v0.1.0
+[Unreleased]: https://github.com/DDub-Automation-Lab/meal-monster-framework/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/DDub-Automation-Lab/meal-monster-framework/releases/tag/v0.1.0
