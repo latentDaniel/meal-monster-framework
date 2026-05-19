@@ -145,12 +145,14 @@ By using this software, you acknowledge and agree that you use it **at your own 
 
 ## Data & privacy
 
-This framework collects and processes information about your diet, body metrics, training, and personal preferences. Any populated document, generated plan, or log this system produces should be treated as **personal health data**.
+Meal Monster only processes the information **you** share with it about your diet, body metrics, training, and personal preferences. Any populated document, generated plan, or log this system produces should be treated as **personal health data**.
+
+**The framework itself has no telemetry, no analytics, and no phone-home.** It doesn't transmit, sync, or share your information beyond your own environment, the AI tooling you've chosen to pair it with, and the locations where you save its output. The only parties that ever see your data are you, your chosen AI, and any storage service you decide to put it in.
 
 **It's recommended that you keep this information private** — store it somewhere you trust (your own device, a private cloud you control, or a service whose privacy posture you've reviewed). It's your decision if you choose to share it more broadly; just make that decision deliberately.
 
 - Avoid committing populated documents, weekly plans, grocery lists, or prep schedules to **public** git repositories or shared drives unless you intend them to be public.
-- If you use a hosted LLM, NotebookLM, a Claude Project, or any cloud service, your prompts and uploaded files may be stored and processed by third parties under their own terms and privacy policies. Review those before sharing anything you wouldn't want retained.
+- If you pair Meal Monster with a hosted LLM, NotebookLM, a Claude Project, or any cloud service, your prompts and uploaded files may be stored and processed by that provider under their own terms and privacy policies. Review those before sending anything you wouldn't want retained.
 
 ## License
 
