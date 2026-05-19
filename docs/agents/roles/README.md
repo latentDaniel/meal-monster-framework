@@ -10,7 +10,7 @@
 ```
 notebook-a-framework.md          ← health-coach owns, meal-architect read-only
 meal-plan-*.md                   ← meal-architect owns, health-coach read-only
-.claude/memory/program-state.md  ← health-coach owns
+state/program-state.md           ← health-coach owns
 prompts/**                       ← read-only to both
 ```
 

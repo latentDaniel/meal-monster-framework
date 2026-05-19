@@ -1,6 +1,6 @@
 # Generator Prompt — Weekly Meal Plan Builder
 
-**How to use this file:** Paste this prompt into Gemini (with both notebooks attached) or Claude Code (with MCP connections to both notebooks). Fill in the variables at the top. The output is a complete week of meal plans, grocery lists, and prep schedule.
+**How to use this file:** Paste this prompt into your AI of choice with access to both notebooks (either attached as sources or reachable via an MCP / API connection). Fill in the variables at the top. The output is a complete week of meal plans, grocery lists, and prep schedule.
 
 ---
 
@@ -80,7 +80,7 @@ After the grid, output a daily totals table:
 | Day | Protein (g) | Carbs (g) | Fat (g) | Calories | Caffeine (mg) | Notes |
 |---|---|---|---|---|---|---|
 
-Flag any day where caffeine exceeds 400mg or macros drift more than 5g from target.
+Flag any day where caffeine exceeds the ceiling from Notebook A Section 9, or where macros drift more than 5g from target.
 
 ### Step 5: Grocery list
 

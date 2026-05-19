@@ -28,7 +28,7 @@ EQUIPMENT: pellet smoker, oven, stove, Instant Pot, rice cooker
 - **Fat floor:** 50g/day for endocrine function.
 - **Meal architecture:** 4 meals/day; ≥40g high-quality animal protein per meal; ≥3g leucine per meal.
 - **Carb placement:** post-workout meal holds the largest carb portion on training days.
-- **Caffeine ceiling:** 400 mg/day.
+- **Caffeine ceiling:** 350 mg/day *(sample user's chosen value)*.
 - **Exclusions:** shellfish.
 
 ---
@@ -156,6 +156,6 @@ Active human time: ~2.5 hours.
 - ✅ Post-workout carb placement: Mon M3 = 38g (largest of day); Tue M3 = 60g (largest of day)
 - ✅ Shellfish exclusion respected
 - ✅ Variety: no protein repeats > 2 meals in 3 days; no flavor-stack same-slot repeats
-- ✅ Caffeine ≤ 400 mg/day
+- ✅ Caffeine ≤ 350 mg/day (under the sample user's ceiling)
 
 `PLAN_OK` · `PREP_OK`

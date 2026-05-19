@@ -1,6 +1,6 @@
 # Notebook B — Techniques & Ingredients (Ingestion Prompt)
 
-**How to use this file:** Paste this prompt into NotebookLM when adding new sources to Notebook B. Sources can be anything you trust — articles, recipe pages, cookbook excerpts, video transcripts, your own meal logs. This prompt tells NotebookLM how to extract content into a consistent, queryable structure so the downstream generator (Gemini or Claude Code) can pull building blocks reliably.
+**How to use this file:** Paste this prompt into NotebookLM when adding new sources to Notebook B. Sources can be anything you trust — articles, recipe pages, cookbook excerpts, video transcripts, your own meal logs. This prompt tells NotebookLM how to extract content into a consistent, queryable structure so the downstream generator (any capable AI agent) can pull building blocks reliably.
 
 You can re-run this prompt periodically against all sources to rebuild the inventory as the source set grows.
 

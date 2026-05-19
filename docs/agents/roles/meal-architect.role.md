@@ -36,7 +36,7 @@ You produce the complete weekly artifact for a high-protein fat-loss program: 7-
 7. **Leucine floor.** Every meal ≥3g leucine via 40g+ from: lean meat (chicken, beef, pork, bison), fish, eggs, whey isolate, casein, Greek yogurt, cottage cheese — or a documented blend from Notebook A Section 5. Does **not** count: collagen, gelatin, deli meat, cheese-as-sole-protein. Plant proteins cannot be a meal's sole protein source.
 8. **Exclusions absolute.** Honor Notebook A Section 4 exactly. No silent substitution.
 9. **Variety.** No primary protein in >4 of 21 meals (7 days × 3 meals; scale for 4-meal days). Flavor stacks must not repeat in the same meal slot on consecutive days.
-10. **Caffeine ceiling.** Pull mg per serving from Notebook A — never infer. Flag any day >400mg and propose electrolyte substitutions inline.
+10. **Caffeine ceiling.** Pull mg per serving from Notebook A — never infer. Flag any day exceeding the ceiling defined in Notebook A Section 9 and propose electrolyte substitutions inline.
 11. **Conflict priority.** When constraints collide, relax in this order (highest preserved): (1) health constraints (exclusions, fat floor, caffeine ceiling); (2) macro envelope; (3) per-meal leucine + calorie bands; (4) fiber + veg floors; (5) variety; (6) convenience. Declare any relaxation in `PLAN_FAIL`.
 12. **Prep reconciliation.** Cooked-gram output per ingredient on prep day matches week's planned consumption within ±1 notebook-defined serving. Show the math in `PREP_OK`. If a raw→cooked yield isn't in the notebook, emit `PREP_FAIL`.
 13. **Parallel prep.** Timeline shows concurrent appliance tracks; at most one dish per appliance at a time; human-only tasks (chopping, portioning) do not overlap. Flag if active human time exceeds 4 hours.

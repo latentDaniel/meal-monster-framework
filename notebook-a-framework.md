@@ -161,10 +161,10 @@ Add fallback rules for any equipment marked incoming or unavailable (e.g., "sous
 
 ## Section 9: Caffeine Ceiling
 
-- **Daily limit:** **400 mg** (FDA guidance)
+- **Daily limit:** `<CAFFEINE_CEILING_MG>` (set your own — the FDA publishes 400 mg/day as a guideline for healthy adults, but personal tolerance varies widely)
 - Document the mg contribution of every caffeine source in your stack (cold brew, energy drink, pre-workout)
 
-**Generator rule.** When proposing daily beverage layouts, **flag any day projected to exceed 400 mg total caffeine** and suggest electrolyte alternatives (LMNT, DIY sodium / potassium / magnesium mix) in place of the most flexible source.
+**Generator rule.** When proposing daily beverage layouts, **flag any day projected to exceed `<CAFFEINE_CEILING_MG>` total caffeine** and suggest electrolyte alternatives (LMNT, DIY sodium / potassium / magnesium mix) in place of the most flexible source.
 
 ---
 
@@ -180,7 +180,7 @@ List items that are **not yet locked**. The generator should treat them as in-fl
 
 ## Section 11: Generator Instructions
 
-The downstream generator (Gemini, Claude Code, or any other agent producing meal plans, grocery lists, or prep schedules) **must** follow these rules:
+The downstream generator (any capable LLM with access to both notebooks) **must** follow these rules:
 
 1. **Confirm current phase** (Section 6) before proposing macros for any plan.
 2. **Respect the calorie and macro envelope** (Section 2) exactly — do not round up totals.

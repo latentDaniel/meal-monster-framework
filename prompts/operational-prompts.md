@@ -1,10 +1,10 @@
-# Claude Code Prompts — Operational Helpers
+# Operational Prompts
 
-Four prompts to paste into Claude Code (or any capable agent) as needed. Each one operationalizes a specific workflow against the two-notebook system.
+Three operational helpers you can drop into any capable LLM to keep the system running once Notebook A and Notebook B are set up. (For the one-shot initial setup, use [`setup-interview-prompt.md`](setup-interview-prompt.md) instead.)
 
 ---
 
-## CC Prompt 1: Notebook A Maintenance
+## Prompt 1: Notebook A Maintenance
 
 **When to use:** Updating the framework — phase changes, macro recalculations, new exclusions, supplement stack changes.
 
@@ -24,7 +24,7 @@ Apply the change with these rules:
 
 ---
 
-## CC Prompt 2: NotebookLM Ingestion Handoff
+## Prompt 2: NotebookLM Ingestion Handoff
 
 **When to use:** You've collected a batch of new sources (article links, recipe URLs, transcripts, your own notes) you want to add to Notebook B. This prompt prepares the ingestion instruction set so NotebookLM extracts content into the right structure.
 
@@ -47,12 +47,12 @@ Your task:
 
 ---
 
-## CC Prompt 3: Weekly Plan Generation (via MCP)
+## Prompt 3: Weekly Plan Generation (via direct notebook access)
 
-**When to use:** You want Claude Code (or another agent) to pull from both notebooks via an MCP connection and generate the week's plan directly.
+**When to use:** You want an agent to pull from both notebooks directly (via NotebookLM's interface or an MCP connection) and generate the week's plan.
 
 ```
-Generate this week's meal plan by pulling from my two NotebookLM notebooks via MCP.
+Generate this week's meal plan by pulling from my two NotebookLM notebooks.
 
 Variables:
 - WEEK_OF: <date>
@@ -64,45 +64,22 @@ Variables:
 - MEALS_PER_DAY: <3 or 4>
 - SPECIAL_NOTES: <any one-offs>
 
-Follow the generator prompt template stored at prompts/generator-prompt.md exactly. Use the MCP connection to:
+Follow the generator prompt template stored at prompts/generator-prompt.md exactly. Then:
 1. Query Notebook A for current constraints — output the confirmed constraints before proceeding
 2. Query Notebook B for inventory items matching the constraints
 3. Build the weekly grid, totals, grocery list, prep schedule, and substitutions per the template
 4. If any required inventory is empty in Notebook B (e.g., not enough proteins ranked by g/cal), flag it and pause for me to add sources before proceeding
 
-Write the final plan to a new markdown file in this directory named meal-plan-<WEEK_OF>.md.
-```
-
----
-
-## CC Prompt 4 (bonus): Generate the initial Notebook A source file
-
-**When to use:** First-time setup. Run this once to generate the markdown file you upload to NotebookLM as the seed for Notebook A.
-
-```
-Generate the source document for Notebook A based on the template in notebook-a-framework.md (provided in this conversation).
-
-My current state for the file:
-- Current weight: <weight>
-- Goal: <goal weight>
-- Phase: <current phase>
-- Macros: <P / C / F / kcal>
-- Meal frequency: <meals/day>
-- Exclusions: <list>
-- Supplement stack: <list>
-- Training: <summary>
-
-Output the complete document as a single markdown file, ready to upload to NotebookLM. Use the exact section structure from the template; replace every <PLACEHOLDER> with my values above.
+Write the final plan to a new markdown file named meal-plan-<WEEK_OF>.md.
 ```
 
 ---
 
 ## Workflow Summary
 
-| Task | Tool | Prompt |
-|---|---|---|
-| Initial Notebook A setup | Claude Code | CC Prompt 4 |
-| Update Notebook A (phase change, etc.) | Claude Code | CC Prompt 1 |
-| Add sources to Notebook B | Claude Code → NotebookLM | CC Prompt 2 |
-| Generate weekly plan (browser) | Gemini | Generator prompt with both notebooks attached |
-| Generate weekly plan (CLI) | Claude Code via MCP | CC Prompt 3 |
+| Task | Prompt |
+|---|---|
+| One-shot initial setup (interview → populated Notebook A) | [`setup-interview-prompt.md`](setup-interview-prompt.md) |
+| Update Notebook A (phase change, macro recalc, etc.) | Prompt 1 above |
+| Add sources to Notebook B | Prompt 2 above |
+| Generate weekly plan | [`generator-prompt.md`](generator-prompt.md) directly, or Prompt 3 |
